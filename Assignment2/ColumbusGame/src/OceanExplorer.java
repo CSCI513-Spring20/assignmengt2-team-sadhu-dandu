@@ -19,10 +19,12 @@ public class OceanExplorer extends Application {
     AnchorPane root ;
     Scene scene;
     boolean[][] grid = map.getMap();
-    Image ShipImage;
-    ImageView ShipImageView;
+    Image ShipImage,Pirateship;
+    ImageView ShipImageView , PirateShipView;
     int xval = 6;
     int yval = 6;
+    int xcoor = 4;
+    int ycoor = 4;
     Ship navy = new Ship();
     public static void main(String[] args) {
         launch(args);
@@ -39,6 +41,7 @@ public class OceanExplorer extends Application {
             }
         }
         loadShipImage();
+        loadPirateShip();
         oceanStage.setScene(scene);
         oceanStage.setTitle("Christopher Columbus Game");
         oceanStage.show();
@@ -52,6 +55,15 @@ public class OceanExplorer extends Application {
         ShipImageView.setX(xval * scale);
         ShipImageView.setY(yval * scale);
         root.getChildren().add(ShipImageView);
+
+    }
+    public void loadPirateShip() throws Exception{
+        Pirateship = new Image("pirateShip.png",50,50,true,true);
+        PirateShipView = new ImageView(Pirateship);
+        map.setLocation(xcoor,ycoor);
+        PirateShipView.setX(xcoor* scale);
+        PirateShipView.setY(ycoor* scale);
+        root.getChildren().add(PirateShipView);
 
     }
     private void startSailing() {	//Method to  start Sailing
