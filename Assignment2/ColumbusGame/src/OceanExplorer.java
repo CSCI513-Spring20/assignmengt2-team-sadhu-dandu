@@ -19,8 +19,8 @@ public class OceanExplorer extends Application {
     AnchorPane root ;
     Scene scene;
     boolean[][] grid = map.getMap();
-    Image ShipImage,Pirateship;
-    ImageView ShipImageView , PirateShipView;
+    Image ShipImage,Pirateship,imgisland;
+    ImageView ShipImageView , PirateShipView,imgislandView;
     int xval = 6;
     int yval = 6;
     int xcoor = 4;
@@ -41,7 +41,21 @@ public class OceanExplorer extends Application {
             }
         }
         loadShipImage();
-        loadPirateShip();
+        loadPirateShip(xcoor,ycoor);
+        loadPirateShip(xcoor+1,ycoor+1);
+        for(int z=0; z<10; z++){
+            int l = (int)(Math.random()*10);
+            int m = (int)(Math.random()*10);
+            if(l != xval && m != yval) {
+                if(l != xcoor && m != ycoor) {
+                    if (l != (xcoor + 1) && m != (ycoor + 1)) {
+                        loadIsland(l, m);
+
+                    }
+                }
+            }
+
+        }
         oceanStage.setScene(scene);
         oceanStage.setTitle("Christopher Columbus Game");
         oceanStage.show();
@@ -57,13 +71,22 @@ public class OceanExplorer extends Application {
         root.getChildren().add(ShipImageView);
 
     }
-    public void loadPirateShip() throws Exception{
+    public void loadPirateShip(int a  , int b) throws Exception{
         Pirateship = new Image("pirateShip.png",50,50,true,true);
         PirateShipView = new ImageView(Pirateship);
-        map.setLocation(xcoor,ycoor);
-        PirateShipView.setX(xcoor* scale);
-        PirateShipView.setY(ycoor* scale);
+        map.setLocation(a,b);
+        PirateShipView.setX(a* scale);
+        PirateShipView.setY(b* scale);
         root.getChildren().add(PirateShipView);
+
+    }
+    public void loadIsland(int a , int b) throws Exception{
+        imgisland = new Image("island.jpg",50,50,true,true);
+        imgislandView = new ImageView(imgisland);
+        map.setLocation(a,b);
+        imgislandView.setX(a* scale);
+        imgislandView.setY(b* scale);
+        root.getChildren().add(imgislandView);
 
     }
     private void startSailing() {	//Method to  start Sailing
