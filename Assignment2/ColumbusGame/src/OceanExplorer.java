@@ -15,7 +15,7 @@ import javafx.scene.input.KeyEvent;
 public class OceanExplorer extends Application {
     final int dimension = 10;
     final int scale = 50;
-    OceanMap map = new OceanMap();
+    OceanMap map = new OceanMap();// object of Ocean Map
     AnchorPane root ;
     Scene scene;
     boolean[][] grid = map.getMap();
@@ -36,20 +36,20 @@ public class OceanExplorer extends Application {
             for (int y = 0; y < dimension; y++) {
                 Rectangle rect = new Rectangle(x*scale, y*scale, scale, scale);
                 rect.setStroke(Color.BLACK);
-                rect.setFill(Color.PALETURQUOISE);	//Filling the background
-                root.getChildren().add(rect);
+                rect.setFill(Color.PALETURQUOISE);	
+                root.getChildren().add(rect);  //Adding Rectangle to the scene
             }
         }
-        loadShipImage();
-        loadPirateShip(xcoor,ycoor);
-        loadPirateShip(xcoor+1,ycoor+1);
-        for(int z=0; z<10; z++){
-            int l = (int)(Math.random()*10);
-            int m = (int)(Math.random()*10);
+        loadShipImage(); //Loading Christopher columbus ship image
+        loadPirateShip(xcoor,ycoor); //Function call for Displaying First pirateship
+        loadPirateShip(xcoor+1,ycoor+1);//Function call for Displaying second pirateship
+        for(int z=0; z<10; z++){        
+            int l = (int)(Math.random()*10);//Generating x coordinates for island images
+            int m = (int)(Math.random()*10);// Generating y coordinates for island images
             if(l != xval && m != yval) {
                 if(l != xcoor && m != ycoor) {
                     if (l != (xcoor + 1) && m != (ycoor + 1)) {
-                        loadIsland(l, m);
+                        loadIsland(l, m); //Function call for displaying island images 
 
                     }
                 }
@@ -62,7 +62,7 @@ public class OceanExplorer extends Application {
         startSailing();
 
     }
-    public void loadShipImage() throws Exception{
+    public void loadShipImage() throws Exception{ //Function for displaying christopher columbus ship
         ShipImage = new Image("ship.png",50,50,true,true);
         ShipImageView = new ImageView(ShipImage);
         map.setLocation(xval,yval);
@@ -71,7 +71,7 @@ public class OceanExplorer extends Application {
         root.getChildren().add(ShipImageView);
 
     }
-    public void loadPirateShip(int a  , int b) throws Exception{
+    public void loadPirateShip(int a  , int b) throws Exception{ // Function for displaying Pirateship images
         Pirateship = new Image("pirateShip.png",50,50,true,true);
         PirateShipView = new ImageView(Pirateship);
         map.setLocation(a,b);
@@ -80,7 +80,7 @@ public class OceanExplorer extends Application {
         root.getChildren().add(PirateShipView);
 
     }
-    public void loadIsland(int a , int b) throws Exception{
+    public void loadIsland(int a , int b) throws Exception{ // Function for displaying Island images
         imgisland = new Image("island.jpg",50,50,true,true);
         imgislandView = new ImageView(imgisland);
         map.setLocation(a,b);
