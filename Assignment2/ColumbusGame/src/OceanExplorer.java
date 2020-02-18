@@ -30,7 +30,7 @@ public class OceanExplorer extends Application {
     int xcoor = 4;
     int ycoor = 4;
     Ship navy = new Ship();
-    PirateShip ps1 = new PirateShip();
+    PirateShip ps1 = new PirateShip(); // objects of pirateShip class
     PirateShip ps2 = new PirateShip();
     public static void main(String[] args) {
         launch(args);
@@ -48,9 +48,9 @@ public class OceanExplorer extends Application {
             }
         }
         loadShipImage();
-        button.setLayoutX(200);
-        button.setLayoutY(500);
-        root.getChildren().add(button);
+        button.setLayoutX(200); // setting x coordinate of the reset button
+        button.setLayoutY(500); // setting y coordinate of the reset button
+        root.getChildren().add(button); // adding button to the root
         /*button.setOnAction(new EventHandler<MouseEvent>() {
             @Override
             //public void handle(MouseEvent e) {
