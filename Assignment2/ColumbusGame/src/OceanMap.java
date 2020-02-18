@@ -5,9 +5,9 @@ public class OceanMap {
 
     int xcoord ,ycoord  ;
 
-    boolean[][] myGrid = new boolean[10][10]; // creating grid
+    static boolean[][] myGrid = new boolean[10][10];
 
-    public void setLocation(int i , int j){ // setting Locations 
+    public void setLocation(int i , int j){
         xcoord = i;
         ycoord = j;
     }
