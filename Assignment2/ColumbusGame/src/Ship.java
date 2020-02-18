@@ -11,9 +11,10 @@ public class Ship extends Observable {
     int ycoord = omap.getLocation().y;
     public Point goEast(int x , int y){
         if(xcoord != 450){
-            xcoord = x + 50;
-            ycoord = y;
-
+            if(omap.myGrid[(x/50)+1][y/50] != true) {
+                xcoord = x + 50;
+                ycoord = y;
+            }
         }
         else{
             xcoord = xcoord;
@@ -26,9 +27,10 @@ public class Ship extends Observable {
     }
     public Point goWest(int x , int y){
         if(xcoord != 0){
-            xcoord = x - 50;
-            ycoord = y;
-
+            if(omap.myGrid[(x/50)-1][y/50] != true) {
+                xcoord = x - 50;
+                ycoord = y;
+            }
 
         }
         else{
@@ -44,9 +46,10 @@ public class Ship extends Observable {
     }
     public Point goNorth(int x, int y) {
         if(ycoord != 0){
-            xcoord = x;
-            ycoord = y - 50;
-
+            if(omap.myGrid[x/50][(y/50)-1] != true) {
+                xcoord = x;
+                ycoord = y - 50;
+            }
         }
         else {
             xcoord = xcoord;
@@ -54,15 +57,16 @@ public class Ship extends Observable {
         }
         setChanged();
         notifyObservers();
-        //OceanMap.myGrid[x/50][y/50]=true;
+
         return new Point(xcoord , ycoord);
     }
     public Point goSouth(int x, int y) {
         if(ycoord != 450){
-            xcoord = x;
-            ycoord = y + 50;
+            if(omap.myGrid[x/50][(y/50)+1] != true)  {
+                xcoord = x;
+                ycoord = y + 50;
 
-
+            }
         }
         else {
             xcoord = xcoord;
