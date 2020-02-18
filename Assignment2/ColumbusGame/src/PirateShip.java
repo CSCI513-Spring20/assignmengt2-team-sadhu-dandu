@@ -17,7 +17,7 @@ public class PirateShip implements Observer {
         }
     }
 
-    public void setLocation (int x, int y) {
+    public void setLocation (int x, int y) { //method to set the location of pirate ships
         i=x/50;j=y/50;
         OceanMap.myGrid[i][j]= true;
 
@@ -26,7 +26,7 @@ public class PirateShip implements Observer {
 
     }
 
-    public void catchCcs() {
+    public void catchCcs() {//method to direct the pirate ship towards columbus ship
         if(i+1<10&&j+1<10&&pship.x - ccship.x < 0&&pship.y - ccship.y < 0) {
         if(OceanMap.myGrid[i+1][j+1]==false) {
             pship.x=pship.x+50;
